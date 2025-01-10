@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prensesi Kurtar</title>
+    <link rel="stylesheet" href="style.css">
+</head> 
+<body>
+    <!-- Başlangıç ekranı -->
+    <div id="start-screen" class="start-screen">
+        <img src="starter.jpg" alt="Oyun Başlangıç" class="start-image">
+        <button id="start-button" class="start-button"> 🎮🚀Oyuna Başla🚀🎮</button>
+    </div>
+
+    <!-- Oyun içeriği -->
+    <div id="game-content" class="hidden">
+        <h1 class="main-title">DÜNYANIN EN GÜZEL PRENSESİNİ KURTARMA OYUNU</h1>
+        
+        <!-- Ses efektleri -->
+        <audio id="jumpSound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" preload="auto"></audio>
+        <audio id="hitSound" src="https://assets.mixkit.co/active_storage/sfx/2620/2620-preview.mp3" preload="auto"></audio>
+        <audio id="winSound" src="winningsound.mp3" preload="auto"></audio>
+        <audio id="gameOverSound" src="losingsound.mp3" preload="auto"></audio>
+        <audio id="pointSound" src="https://assets.mixkit.co/active_storage/sfx/2002/2002-preview.mp3" preload="auto"></audio>
+        <audio id="backgroundMusic" src="gamesound.mp3" loop preload="auto"></audio>
+        <audio id="walkingSound" src="walking.mp3" preload="auto"></audio>
+
+        <div class="game-wrapper">
+            
+            <button class="again-button" onclick="restartGame()">
+                 ↪️Tekrar Oyna
+            </button>
+            
+            <button id="fullscreenButton" class="fullscreen-button">
+                <span class="fullscreen-icon">⛶</span> Tam Ekran
+            </button>
+            <button id="musicButton" class="music-button">
+                🎵 Müziği Başlat
+            </button>
+            <div class="game-container">
+                <div id="score">Skor: 0</div>
+                <div id="health">Can: ❤️❤️❤️</div>
+                <div id="prince" class="character">
+                    <div class="character-body">
+                        <div class="face" role="img" aria-label="Prens yüzü"></div>
+                        <div class="body-part"></div>
+                        <div class="outfit"></div>
+                    </div>
+                </div>
+                <div id="captive-princess" class="character">
+                    <div class="dungeon">
+                        <div class="character-body">
+                            <div class="crown"></div>
+                            <div class="face"></div>
+                            <div class="body-part"></div>
+                            <div class="dress"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="game-over" class="hidden">
+                    Oyun Bitti!<br>
+                    <button onclick="restartGame()">Tekrar Oyna</button>
+                </div>
+                <div id="win" class="hidden">
+                    <div class="win-message">
+                        🎉 Prensesi Kurtardın! 🎉<br>
+                        <span class="win-subtitle">Artık Sonsuza Dek Mutlu Yaşayacaksınız!!!</span>
+                    </div>
+                    <button onclick="restartGame()">Tekrar Oyna</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h2>Nasıl Oynanır?</h2>
+            <p>Prensi kontrol ederek engellere çarpmadan prensese ulaşmaya çalışın!</p>
+            <div class="controls-info">
+                <div class="key-info">
+                    <span class="key">↑</span> veya <span class="key">W</span>: Yukarı Git
+                </div>
+                <div class="key-info">
+                    <span class="key">←</span> veya <span class="key">A</span>: Sola Git
+                </div>
+                <div class="key-info">
+                    <span class="key">→</span> veya <span class="key">D</span>: Sağa Git
+                </div>
+                <div class="key-info">
+                    <span class="key">↓</span> veya <span class="key">S</span>: Aşağı Git
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html> 

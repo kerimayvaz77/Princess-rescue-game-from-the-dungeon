@@ -1,0 +1,1213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg, 
+        #2C3E50, 
+        #3498db,
+        #2C3E50
+    );
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    font-family: Arial, sans-serif;
+}
+
+.game-container {
+    width: 1200px;
+    height: 600px;
+    border: 4px solid rgba(149, 165, 166, 0.8);
+    box-shadow: 
+        0 0 20px rgba(0, 0, 0, 0.3),
+        inset 0 0 50px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    background: url('arkaplan.jpg') repeat-x;
+    background-size: cover;
+    margin: 20px auto;
+    background-blend-mode: overlay;
+    backdrop-filter: blur(5px);
+    z-index: 1;
+}
+
+.character {
+    position: absolute;
+    width: 80px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 10;
+}
+
+/* Müzik düğmesi */
+.music-button {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(180px);
+    padding: 18px 30px;
+    background: linear-gradient(145deg, #ff69b4, #ff1493);
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.2),
+        inset 0 2px 5px rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 26px;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.music-button:hover {
+    transform: translateX(180px) translateY(-2px);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.3),
+        inset 0 2px 5px rgba(255, 255, 255, 0.2);
+}
+
+/* Prens karakteri */
+#prince {
+    bottom: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+#prince::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 8px;
+    background: linear-gradient(90deg, #C0C0C0, #E8E8E8);
+    right: -25px;
+    top: 45%;
+    transform: rotate(-45deg);
+    border-radius: 2px;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.2),
+        inset 0 1px 3px rgba(255, 255, 255, 0.5);
+}
+
+#prince::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 20px;
+    background: linear-gradient(90deg, #FFD700, #DAA520);
+    right: -8px;
+    top: 48%;
+    transform: rotate(-45deg);
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.character-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+/* Karakter yüzleri */
+.face {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 3px solid #333;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+#prince .face {
+    background-image: url('prens.jpg');
+    background-color: #fff;
+}
+
+/* Prens vücudu */
+#prince .body-part {
+    width: 50px;
+    height: 45px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+#prince .outfit {
+    width: 65px;
+    height: 55px;
+    background-color: #1a1a1a;
+    border-radius: 5px 5px 15px 15px;
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Tutsak Prenses */
+#captive-princess {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 80px;
+    height: 100px;
+    z-index: 2;
+}
+
+#captive-princess .character-body {
+    position: relative;
+    width: 60px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+#captive-princess .face {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-image: url('prenses.jpg');
+    background-color: #fff;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    border: 2px solid #333;
+}
+
+#captive-princess .body-part {
+    width: 40px;
+    height: 35px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+#captive-princess .dress {
+    width: 50px;
+    height: 45px;
+    background: linear-gradient(to bottom, #FFFFFF 60%, #F0F0F0);
+    border-radius: 12px 12px 25px 25px;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 
+        0 5px 15px rgba(255, 255, 255, 0.3),
+        inset 0 2px 5px rgba(255, 255, 255, 0.5);
+    background-image: 
+        radial-gradient(circle at 50% 50%, transparent 8px, rgba(255, 255, 255, 0.8) 8px),
+        linear-gradient(to right, transparent 50%, rgba(255, 255, 255, 0.5) 50%);
+    background-size: 20px 20px, 10px 100%;
+}
+
+/* Taç */
+.crown {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 15px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    clip-path: polygon(
+        0% 100%, 
+        20% 50%, 
+        40% 100%, 
+        60% 50%, 
+        80% 100%, 
+        100% 50%, 
+        100% 100%
+    );
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 3;
+}
+
+/* Tacın mücevherleri */
+#captive-princess::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle at center, #FF69B4, #FF1493);
+    border-radius: 50%;
+    box-shadow: 
+        -10px 0 0 #FF69B4,
+        10px 0 0 #FF69B4,
+        0 0 10px rgba(255, 105, 180, 0.5);
+    z-index: 5;
+}
+
+.controls {
+    display: none;
+}
+
+.control-row {
+    display: flex;
+    gap: 5px;
+}
+
+.controls button {
+    padding: 18px 30px;
+    font-size: 26px;
+    background: linear-gradient(145deg, #9B59B6, #8E44AD);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.2),
+        inset 0 2px 5px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.controls button:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.3),
+        inset 0 2px 5px rgba(255, 255, 255, 0.2);
+    background: linear-gradient(145deg, #A569BD, #9B59B6);
+}
+
+.controls button:active {
+    transform: translateY(1px) scale(0.95);
+}
+
+#score, #health {
+    position: absolute;
+    padding: 12px 20px;
+    font-size: 22px;
+    color: #ECF0F1;
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+    border-radius: 10px;
+    z-index: 1;
+    left: 10px;
+    box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.2),
+        inset 0 2px 5px rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+#score {
+    top: 10px;
+}
+
+#health {
+    top: 50px;
+}
+
+#game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    border: 4px solid rgba(255, 0, 0, 0.7);
+    box-shadow: 
+        0 0 100px rgba(255, 0, 0, 0.5),
+        inset 0 0 50px rgba(255, 0, 0, 0.3);
+    backdrop-filter: blur(25px);
+    color: white;
+    padding: 50px 80px;
+    text-align: center;
+    border-radius: 30px;
+    z-index: 1000;
+    animation: gameOverAppear 1s cubic-bezier(0.4, 0, 0.2, 1), shake 0.5s ease-in-out 1s;
+}
+
+#game-over::before {
+    content: '💔 💥 ☠️';
+    font-size: 64px;
+    display: block;
+    margin-bottom: 30px;
+    animation: emojiDance 2s infinite;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+}
+
+#game-over::after {
+    content: '🔥 Game Over 🔥';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 32px;
+    white-space: nowrap;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+    animation: fireText 1.5s infinite;
+}
+
+#game-over {
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: transparent;
+    background: linear-gradient(135deg, #ff0000, #ff6b6b, #ff0000, #ff4444);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 300% 300%;
+    animation: gradientText 3s ease infinite, glowText 2s infinite;
+}
+
+#game-over button {
+    margin-top: 40px;
+    padding: 20px 50px;
+    font-size: 24px;
+    background: linear-gradient(135deg, #ff0000, #ff6b6b);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 25px rgba(255, 0, 0, 0.4);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 3px;
+    position: relative;
+    overflow: hidden;
+    animation: buttonPulse 2s infinite;
+}
+
+#game-over button:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 35px rgba(255, 0, 0, 0.6);
+    background: linear-gradient(135deg, #ff6b6b, #ff0000);
+}
+
+#game-over button::after {
+    content: '🎮';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    animation: bounce 1s infinite;
+}
+
+@keyframes gameOverAppear {
+    0% {
+        transform: translate(-50%, -30%) scale(0.5);
+        opacity: 0;
+        filter: blur(20px);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes emojiDance {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.2) rotate(-10deg); }
+    50% { transform: scale(1.4) rotate(0deg); }
+    75% { transform: scale(1.2) rotate(10deg); }
+}
+
+@keyframes fireText {
+    0%, 100% { 
+        transform: translateX(-50%) scale(1);
+        text-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+    }
+    50% { 
+        transform: translateX(-50%) scale(1.1);
+        text-shadow: 0 0 40px rgba(255, 0, 0, 0.9);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translate(-50%, -50%); }
+    25% { transform: translate(-52%, -48%); }
+    50% { transform: translate(-48%, -52%); }
+    75% { transform: translate(-52%, -52%); }
+}
+
+@keyframes glowText {
+    0%, 100% { text-shadow: 0 0 20px rgba(255, 0, 0, 0.5); }
+    50% { text-shadow: 0 0 40px rgba(255, 0, 0, 0.8); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(-50%); }
+    50% { transform: translateY(-70%); }
+}
+
+@keyframes buttonPulse {
+    0%, 100% { 
+        box-shadow: 0 5px 25px rgba(255, 0, 0, 0.4);
+    }
+    50% { 
+        box-shadow: 0 5px 35px rgba(255, 0, 0, 0.7);
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.obstacle {
+    position: absolute;
+    width: 100px;
+    height: 60px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    text-align: center;
+    color: #E74C3C;
+    font-weight: bold;
+    padding: 5px;
+    border: 2px solid #E74C3C;
+    font-family: 'Comic Sans MS', cursive;
+    transform: rotate(-10deg);
+}
+
+.instructions {
+    background: linear-gradient(145deg, rgba(155, 89, 182, 0.2), rgba(142, 68, 173, 0.2));
+    border: 2px solid rgba(155, 89, 182, 0.3);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        inset 0 2px 5px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 20px;
+    margin: 20px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: instructionsGlow 2s infinite alternate;
+}
+
+.instructions h2 {
+    color: #FFD700;
+    margin-bottom: 20px;
+    font-size: 32px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: 'Arial Black', sans-serif;
+    letter-spacing: 2px;
+}
+
+.instructions p {
+    color: #FFFFFF;
+    font-size: 18px;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    line-height: 1.6;
+}
+
+.controls-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.key-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: #FFFFFF;
+    font-size: 18px;
+    padding: 15px;
+    background: rgba(155, 89, 182, 0.2);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.key-info:hover {
+    transform: translateY(-3px);
+    background: rgba(155, 89, 182, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.key {
+    background: linear-gradient(145deg, #8E44AD, #9B59B6);
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.2),
+        inset 0 2px 5px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    min-width: 50px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.key:hover {
+    transform: scale(1.1);
+    box-shadow: 
+        0 6px 15px rgba(0, 0, 0, 0.3),
+        inset 0 2px 5px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes instructionsGlow {
+    from {
+        box-shadow: 
+            0 10px 30px rgba(0, 0, 0, 0.3),
+            inset 0 2px 5px rgba(255, 255, 255, 0.1),
+            0 0 10px rgba(155, 89, 182, 0.3);
+    }
+    to {
+        box-shadow: 
+            0 10px 30px rgba(0, 0, 0, 0.3),
+            inset 0 2px 5px rgba(255, 255, 255, 0.1),
+            0 0 30px rgba(155, 89, 182, 0.5);
+    }
+}
+
+.main-title {
+    font-size: 42px;
+    color: #FFD700;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 
+        0 0 10px rgba(255, 215, 0, 0.5),
+        2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Arial Black', sans-serif;
+    background: linear-gradient(
+        to bottom,
+        #FFD700,
+        #FFA500
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 20px;
+    letter-spacing: 3px;
+    animation: titleGlow 2s infinite alternate;
+}
+
+@keyframes titleGlow {
+    from {
+        filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+    }
+    to {
+        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+    }
+}
+
+.game-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fullscreen-button {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 18px 30px;
+    background: linear-gradient(145deg, #ff69b4, #ff1493);
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.2),
+        inset 0 2px 5px rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 100;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.again-button {
+    position: absolute;
+    top: 10px;
+    left: 30%;
+    transform: translateX(-50%);
+    padding: 18px 30px;
+    background: linear-gradient(145deg, #ff69b4, #ff1493);
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.2),
+        inset 0 2px 5px rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 100;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+/* Engeller */
+.obstacle.cat {
+    width: 60px;
+    height: 40px;
+    background-color: #000000;
+    border-radius: 20px;
+    position: relative;
+    transform: rotate(0deg);
+    animation: catWalk 0.5s infinite alternate;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Kedi Kulakları */
+.obstacle.cat::before,
+.obstacle.cat::after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 25px solid #000000;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+.obstacle.cat::before {
+    left: 5px;
+    transform: rotate(-30deg);
+}
+
+.obstacle.cat::after {
+    right: 5px;
+    transform: rotate(30deg);
+}
+
+/* Kedi Gözleri */
+.obstacle.cat .eyes {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 10px;
+}
+
+.obstacle.cat .eyes::before,
+.obstacle.cat .eyes::after {
+    content: '';
+    width: 12px;
+    height: 6px;
+    background: #FFD700;
+    border-radius: 50% 50% 0 0;
+    margin: 0 5px;
+    box-shadow: 0 0 8px #FFD700;
+}
+
+/* Kedi animasyonları */
+@keyframes catWalk {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-3px);
+    }
+}
+
+@keyframes tailWag {
+    from {
+        transform: rotate(-20deg);
+    }
+    to {
+        transform: rotate(20deg);
+    }
+}
+
+/* İğne engeli */
+.obstacle.needle {
+    width: 160px;
+    height: 15px;
+    background: linear-gradient(
+        90deg,
+        #A0A0A0 0%,
+        #D0D0D0 20%,
+        #FFFFFF 50%,
+        #D0D0D0 80%,
+        #A0A0A0 100%
+    );
+    position: relative;
+    transform: rotate(30deg);
+    border-radius: 8px;
+    box-shadow: 
+        0 3px 6px rgba(0, 0, 0, 0.3),
+        inset 0 1px 3px rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* İğne ucu */
+.obstacle.needle::before {
+    content: '';
+    position: absolute;
+    right: -20px;
+    width: 30px;
+    height: 15px;
+    background: linear-gradient(90deg, #A0A0A0, #808080);
+    clip-path: polygon(0 50%, 100% 0, 100% 50%, 100% 100%);
+}
+
+/* İğne ortası yazı */
+.obstacle.needle span {
+    position: absolute;
+    width: 100px;
+    text-align: center;
+    font-size: 14px;
+    color: #4A235A;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+/* İğne başı */
+.obstacle.needle::after {
+    content: '';
+    position: absolute;
+    left: -12px;
+    width: 25px;
+    height: 25px;
+    background: radial-gradient(circle at center, #FFD700, #FFA500);
+    border-radius: 50%;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+/* Zindan */
+.dungeon {
+    position: absolute;
+    width: 100px;
+    height: 120px;
+    background: linear-gradient(to bottom, rgba(44, 62, 80, 0.9), rgba(52, 73, 94, 0.9));
+    border: 4px solid #1a1a1a;
+    border-radius: 10px;
+    z-index: 3;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Zindan parmaklıkları */
+.dungeon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: repeating-linear-gradient(
+        to right,
+        transparent,
+        transparent 8px,
+        #1a1a1a 8px,
+        #1a1a1a 12px
+    );
+    z-index: 4;
+}
+
+/* Prenses vücudu ve kıyafeti */
+#captive-princess .character-body {
+    position: relative;
+    width: 60px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+#captive-princess .face {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-image: url('prenses.jpg');
+    background-color: #fff;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    border: 2px solid #333;
+}
+
+#captive-princess .body-part {
+    width: 40px;
+    height: 35px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+#captive-princess .dress {
+    width: 50px;
+    height: 45px;
+    background: linear-gradient(to bottom, #FFFFFF 60%, #F0F0F0);
+    border-radius: 12px 12px 25px 25px;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 
+        0 5px 15px rgba(255, 255, 255, 0.3),
+        inset 0 2px 5px rgba(255, 255, 255, 0.5);
+    background-image: 
+        radial-gradient(circle at 50% 50%, transparent 8px, rgba(255, 255, 255, 0.8) 8px),
+        linear-gradient(to right, transparent 50%, rgba(255, 255, 255, 0.5) 50%);
+    background-size: 20px 20px, 10px 100%;
+}
+
+/* Zindan animasyonları */
+@keyframes dungeonBreak {
+    0% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(-50%) scale(1.2) rotate(5deg);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(-50%) scale(0);
+        opacity: 0;
+    }
+}
+
+.dungeon.breaking {
+    animation: dungeonBreak 1s forwards;
+}
+
+/* Konfeti */
+.confetti {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    background-color: transparent;
+    animation: confetti 4s ease-in infinite;
+}
+
+.confetti::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #FFD700, #FFA500, #FF69B4, #9B59B6);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    animation: confettiRotate 1s linear infinite;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+@keyframes confettiRotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes confetti {
+    0% {
+        transform: translateY(-10vh) translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(50vh) translateX(100px) rotate(360deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) translateX(-100px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#win {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.85);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 
+        0 0 50px rgba(255, 215, 0, 0.2),
+        inset 0 0 30px rgba(255, 215, 0, 0.2);
+    backdrop-filter: blur(20px);
+    color: white;
+    padding: 40px 60px;
+    text-align: center;
+    border-radius: 25px;
+    z-index: 1000;
+    animation: winAppear 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.win-message {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: transparent;
+    background: linear-gradient(135deg, #FFD700, #FFA500, #FF69B4, #FFD700);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 300% 300%;
+    animation: gradientText 3s ease infinite;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    font-weight: bold;
+}
+
+.win-subtitle {
+    display: block;
+    font-size: 24px;
+    margin-top: 15px;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: subtitleAppear 0.5s ease forwards 0.8s;
+}
+
+#win button {
+    margin-top: 30px;
+    padding: 15px 40px;
+    font-size: 22px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+#win button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    background: linear-gradient(135deg, #FFA500, #FFD700);
+}
+
+#win button:active {
+    transform: translateY(1px);
+}
+
+#win button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(45deg);
+    animation: buttonShine 3s linear infinite;
+}
+
+@keyframes winAppear {
+    0% {
+        transform: translate(-50%, -30%);
+        opacity: 0;
+        filter: blur(10px);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes subtitleAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientText {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes buttonShine {
+    0% {
+        left: -50%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.game-wrapper.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #2C3E50, #3498db, #2C3E50);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-wrapper.fullscreen .game-container {
+    width: 90vw;
+    height: 90vh;
+    margin: 0;
+}
+
+.game-wrapper.fullscreen .instructions,
+.game-wrapper.fullscreen .controls,
+.game-wrapper.fullscreen .main-title {
+    display: none;
+}
+
+/* Başlangıç ekranı */
+.start-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    z-index: 9999;
+}
+
+.start-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.start-button {
+    position: absolute;
+    padding: 20px 40px;
+    font-size: 28px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    animation: buttonPulse 2s infinite;
+}
+
+.start-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.8);
+    background: linear-gradient(135deg, #FFA500, #FFD700);
+}
+
+@keyframes buttonPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.7);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    }
+} 
