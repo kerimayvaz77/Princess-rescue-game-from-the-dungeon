@@ -2,7 +2,6 @@
 
 Bu proje, HTML, CSS ve JavaScript kullanılarak geliştirilmiş eğlenceli bir 2D platform oyunudur. Oyunda, bir prensesin diğer prensesi kurtarma macerası anlatılmaktadır.
 
-![Oyun Ekranı](Starter.jpg)
 
 ## 🎮 Oyun Özellikleri
 
